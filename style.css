@@ -1,0 +1,14 @@
+*{
+    box-sizing: border-box;
+}
+
+#container{
+    
+}
+
+ul li{
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid red;
+    max-width: 350px;
+}

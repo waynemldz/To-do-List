@@ -13,5 +13,14 @@ function addTask() {
     ul.appendChild(li);
 
     task.value = ""
+
+    let span = document.createElement("span");
+    span.innerText = "x";
+    li.appendChild(span)
+
+    span.addEventListener("click", ()=>{
+      li.remove()
+    })
   }
 }
+
