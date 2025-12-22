@@ -1,4 +1,4 @@
-const task = document.getElementById("Task");
+const task = document.getElementById("input-box");
 
 function addTask() {
   if (task.value === "") {

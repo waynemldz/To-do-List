@@ -10,10 +10,12 @@
   </head>
   <body>
     <div id="container">
-      <div id="TaskAdd">
-        <h1>To-do List</h1>
-        <input type="text" name="Task" id="Task" placeholder="Type your task" />
-        <button id="Add" onclick="addTask()">Ok</button>
+      <div id="todo-app">
+        <h2>To-do List <img src="./assets/icon.png" alt=""></h2>
+        <div class="row">
+            <input type="text" id="input-box" placeholder="Add your task" />
+            <button id="Add" onclick="addTask()">Add</button>
+        </div>
       </div>
 
       <ul id="taskList"></ul>
