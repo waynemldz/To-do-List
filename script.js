@@ -1,26 +1,29 @@
-const task = document.getElementById("input-box");
+const inputBox = document.getElementById("input-box");
+const listContainer = document.getElementById("list-container")
+
+
 
 function addTask() {
-  if (task.value === "") {
-    alert("Type anything");
+  if (inputBox.value === "") {
+    alert("You must write something!");
   }else{
-    let taskValue = task.value;
-
-    let ul = document.getElementById("taskList");
     let li = document.createElement("li");
+    li.innerHTML = inputBox.value;
+    listContainer.appendChild(li);
 
-    li.innerHTML = taskValue;
-    ul.appendChild(li);
-
-    task.value = ""
 
     let span = document.createElement("span");
-    span.innerText = "x";
-    li.appendChild(span)
-
-    span.addEventListener("click", ()=>{
-      li.remove()
-    })
+    span.innerHTML = "\u00d7";
+    li.appendChild(span);
   }
+    inputBox.value = "oi"
 }
 
+listContainer.addEventListener("click", (e)=>{
+  if(e.target.tagName === "LI"){
+    e.target.classList.toggle("checked");
+  }else if(e.target.tagName === "SPAN"){
+      e.target.parentElement.remove()
+    }
+  
+}, false)
