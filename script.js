@@ -2,6 +2,7 @@ const inputBox = document.getElementById("input-box");
 const listContainer = document.getElementById("list-container")
 
 
+// Add task
 
 function addTask() {
   if (inputBox.value === "") {
@@ -20,6 +21,8 @@ function addTask() {
     saveData();
 }
 
+// Checked and remove task
+
 listContainer.addEventListener("click", (e)=>{
   if(e.target.tagName === "LI"){
     e.target.classList.toggle("checked");
@@ -31,6 +34,8 @@ listContainer.addEventListener("click", (e)=>{
   
 }, false)
 
+// Save and show task
+
 function saveData(){
   localStorage.setItem("data", listContainer.innerHTML);
 }
@@ -39,3 +44,11 @@ function showTask(){
   listContainer.innerHTML = localStorage.getItem("data")
 }
 showTask();
+
+// Enter to add task
+
+inputBox.addEventListener("keydown", (e) => {
+  if(e.key === "Enter"){
+    addTask()
+  }
+})
