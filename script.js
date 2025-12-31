@@ -52,3 +52,9 @@ inputBox.addEventListener("keydown", (e) => {
     addTask()
   }
 })
+
+inputBox.addEventListener("keydown", (e) => {
+  if(e.key === "Enter"){
+    addTask()
+  }
+})
