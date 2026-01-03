@@ -112,3 +112,15 @@ ul li span{
 ul li span:hover{
     background: #edeef0;
 }
+
+ul li div{
+    width: 100%;
+    border: 1px solid red;
+    display: ;
+}
+
+ul li div input{
+    border-radius: 5px;
+    padding: 5px;
+    width: 300px;
+}

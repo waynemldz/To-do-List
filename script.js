@@ -12,10 +12,21 @@ function addTask() {
     li.innerHTML = inputBox.value;
     listContainer.appendChild(li);
 
+     // Task editor
 
+    let editorDiv = document.createElement("div");
+    li.appendChild(editorDiv);
+
+    let inputEdit = document.createElement("input");
+    inputEdit.setAttribute("type", "text");
+    inputEdit.value = li.innerHTML;
+    editorDiv.appendChild(inputEdit)
+
+    // Remove button
     let span = document.createElement("span");
     span.innerHTML = "\u00d7";
     li.appendChild(span);
+    
   }
     inputBox.value = ""
     saveData();
@@ -46,12 +57,6 @@ function showTask(){
 showTask();
 
 // Enter to add task
-
-inputBox.addEventListener("keydown", (e) => {
-  if(e.key === "Enter"){
-    addTask()
-  }
-})
 
 inputBox.addEventListener("keydown", (e) => {
   if(e.key === "Enter"){
