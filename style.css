@@ -115,7 +115,6 @@ ul li span:hover{
 
 ul li div{
     width: 100%;
-    border: 1px solid red;
     display: ;
 }
 
@@ -123,4 +122,11 @@ ul li div input{
     border-radius: 5px;
     padding: 5px;
     width: 300px;
+    border: none;
+    border-bottom: 1px solid black;
+}
+
+ul li div button{
+    padding: 10px;
+    margin-left: 15px;
 }
