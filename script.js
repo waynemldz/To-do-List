@@ -5,16 +5,27 @@ const listContainer = document.getElementById("list-container");
 
 function addTask() {
   if (inputBox.value === "") {
-    alert("You must write something!");
+    return alert("You must write something!");
   } else {
     let li = document.createElement("li");
-    li.innerHTML = inputBox.value;
     listContainer.appendChild(li);
+
+    // Span text
+    let textSpan = document.createElement("span");
+    textSpan.className = "text-span";
+    textSpan.textContent = inputBox.value;
+    li.appendChild(textSpan);
 
     // Remove button
     let span = document.createElement("span");
+    span.className = "remove-btn"
     span.innerHTML = "\u00d7";
     li.appendChild(span);
+
+    // Checked Button
+    let checkBtn = document.createElement("span");
+    checkBtn.className = "check-btn";
+    li.prepend(checkBtn);
   }
   inputBox.value = "";
   saveData();
@@ -29,13 +40,15 @@ function taskEditor(e) {
     return;
   }
 
+  let textSpan = document.querySelector(".text-span");
+
   let editorDiv = document.createElement("div");
   editorDiv.className = "task-editor";
   li.appendChild(editorDiv);
 
   let inputEdit = document.createElement("input");
   inputEdit.type = "text";
-  inputEdit.value = li.firstChild.textContent;
+  inputEdit.value = textSpan.textContent;
   editorDiv.appendChild(inputEdit);
 
   let okButton = document.createElement("button");
@@ -43,7 +56,7 @@ function taskEditor(e) {
   editorDiv.appendChild(okButton);
 
   okButton.addEventListener("click", () => {
-    li.firstChild.textContent = inputEdit.value;
+    textSpan.textContent = inputEdit.value;
     editorDiv.remove();
     saveData();
   });
@@ -54,16 +67,28 @@ function taskEditor(e) {
 listContainer.addEventListener(
   "click",
   (e) => {
-    if (e.target.tagName === "LI") {
+
+    const li = e.target.closest("li");
+    if(!li) return;
+    
+    if (
+      e.target.tagName === "LI" ||
+      e.target.classList.contains("text-span")
+    ) {
       taskEditor(e);
-      // e.target.classList.toggle("checked");
-      // saveData();
-    } else if (e.target.tagName === "SPAN") {
+    } 
+    
+    else if (e.target.tagName === "SPAN" && !e.target.classList.contains("check-btn") && !e.target.classList.contains("text-span")) {
       e.target.parentElement.remove();
       saveData();
     }
-  },
-  false
+
+    if (e.target.classList.contains("check-btn")) {
+    li.classList.toggle("checked");
+    saveData();
+    return;
+  }
+  }
 );
 
 // Save and show task

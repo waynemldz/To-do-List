@@ -64,14 +64,32 @@ button{
 }
 
 ul li{
-    font-size: 17px;
-    padding: 12px 8px 12px 50px;
     cursor: pointer;
     user-select: none;
     list-style: none;
     position: relative;
-
 }
+
+ul li .text-span{
+    font-size: 17px;
+    padding: 12px 8px 12px 0px;
+    cursor: pointer;
+    position: relative;
+    top: 0;
+    left: 50px;
+    color: black;
+}
+
+ul li .check-btn{
+    position: absolute;
+    left: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 28px;
+    height: 28px;
+    cursor: pointer;
+}
+
 
 ul li::before{
     content: '';
@@ -96,10 +114,10 @@ ul li.checked::before{
     background-image: url(./assets/checked.png);
 }
 
-ul li span{
+ul li .remove-btn{
     position: absolute;
     right: 0;
-    top: 5px;
+    top: 0;
     width: 40px;
     height: 40px;
     font-size: 22px;
@@ -109,13 +127,13 @@ ul li span{
     border-radius: 50%;
 }
 
-ul li span:hover{
+/* ul li span:hover{
     background: #edeef0;
-}
+} */
 
 ul li div{
     width: 100%;
-    display: ;
+    margin-left: 50px;
 }
 
 ul li div input{
