@@ -33,27 +33,25 @@ function addTask() {
 
 // Task editor
 
-function taskEditor(e) {
-  const li = e.target;
+function taskEditor(li) {
 
-  if (li.querySelector(".task-editor")) {
-    return;
-  }
+  if (li.querySelector(".task-editor")) return;
 
   let textSpan = document.querySelector(".text-span");
 
   let editorDiv = document.createElement("div");
   editorDiv.className = "task-editor";
-  li.appendChild(editorDiv);
-
+  
   let inputEdit = document.createElement("input");
   inputEdit.type = "text";
   inputEdit.value = textSpan.textContent;
-  editorDiv.appendChild(inputEdit);
-
+  
   let okButton = document.createElement("button");
   okButton.innerText = "Ok";
+  
+  editorDiv.appendChild(inputEdit);
   editorDiv.appendChild(okButton);
+  li.appendChild(editorDiv);
 
   okButton.addEventListener("click", () => {
     textSpan.textContent = inputEdit.value;
@@ -75,7 +73,7 @@ listContainer.addEventListener(
       e.target.tagName === "LI" ||
       e.target.classList.contains("text-span")
     ) {
-      taskEditor(e);
+      taskEditor(li);
     } 
     
     else if (e.target.tagName === "SPAN" && !e.target.classList.contains("check-btn") && !e.target.classList.contains("text-span")) {
