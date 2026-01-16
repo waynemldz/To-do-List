@@ -35,9 +35,14 @@ function addTask() {
 
 function taskEditor(li) {
 
+  // Checks if an editor is already open in any task.
+  const openedEditor = document.querySelector(".task-editor");
+  if (openedEditor) return;
+
+  // Avoids duplicating editors in the same line
   if (li.querySelector(".task-editor")) return;
 
-  let textSpan = document.querySelector(".text-span");
+  let textSpan = li.querySelector(".text-span");
 
   let editorDiv = document.createElement("div");
   editorDiv.className = "task-editor";
